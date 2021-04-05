@@ -19,7 +19,7 @@ db.sequelize.sync({alter:true}).then(async ()=> {
 const todos = [
     {
         task : 'Task 1',
-        completed: false
+        completed: true
     },
     {
         task : 'Task 2',
