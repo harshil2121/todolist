@@ -80,7 +80,7 @@ app.post("/update",async (req,res)=>{
     // })
     todos = todos.map(todo => {
         if(todo.id === req.body.id) {
-            return { ...todo , completed : !todo.completed}
+            return { ...todo, id: uuid() , completed : !todo.completed}
         }
         return todo
     })
