@@ -6,8 +6,15 @@ const {db} = require("./db/index")
 const app = express();
 const {v4 : uuid} = require('uuid')
 app.use(cors())
+const path = require('path');
+
 // so we access json data from front-end
 app.use(bodyParser.json())
+
+app.use(express.static(path.join(__dirname, 'client/build')));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+   });
 
 //starting database?
 
@@ -83,6 +90,8 @@ app.post("/update",async (req,res)=>{
 app.get('/todos', (request, response) => {
     response.json(todos)
 })
+
+
 
 app.listen(8080, (err) => {
     if(err) {
